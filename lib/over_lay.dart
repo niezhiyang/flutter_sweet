@@ -9,12 +9,6 @@ class OverlayToolWidget extends StatefulWidget {
 
   @override
   OverlayToolWidgetState createState() => OverlayToolWidgetState();
-
-  static OverlayToolWidgetState? of(BuildContext context) {
-    final OverlayToolWidgetState? result =
-        context.findAncestorStateOfType<OverlayToolWidgetState>();
-    return result;
-  }
 }
 
 class OverlayToolWidgetState extends State<OverlayToolWidget>
@@ -59,7 +53,10 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
                   ),
                 ],
               ));
+
+      showFloating();
     });
+
   }
 
   final double circleRadius = 80;
@@ -102,7 +99,7 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
               decoration: BoxDecoration(
                   color: Colors.blue,
                   image: DecorationImage(
-                      image: const AssetImage('assets/images/icon_head.webp')),
+                      image: NetworkImage('assets/images/flutter.jpeg')),
                   borderRadius: BorderRadius.circular(menuSize / 2)),
             ),
           ),
