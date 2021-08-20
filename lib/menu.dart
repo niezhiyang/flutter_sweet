@@ -168,7 +168,6 @@ class MenuState extends State<Menu>
   }
 
   void toggle() {
-    print("--$_closed------------");
 
     if (_closed) {
       _controller.forward();

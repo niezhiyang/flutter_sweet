@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'console_widget.dart';
 import 'menu.dart';
 
 class OverlayToolWidget extends StatefulWidget {
@@ -46,6 +47,7 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
       entry = OverlayEntry(
           builder: (context) => Stack(
                 children: <Widget>[
+                  ConsoleWidget(),
                   Positioned(
                     left: offset.dx,
                     top: offset.dy,
@@ -56,7 +58,6 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
 
       showFloating();
     });
-
   }
 
   final double circleRadius = 80;
@@ -70,7 +71,6 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
       width: circleRadius * 2,
       height: circleRadius * 2,
       alignment: Alignment.center,
-      // color: Colors.orangeAccent,
       child: IconTheme(
         data: IconTheme.of(context).copyWith(color: Colors.white, size: 18),
         child: Menu(
@@ -99,7 +99,8 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
               decoration: BoxDecoration(
                   color: Colors.blue,
                   image: DecorationImage(
-                      image: NetworkImage('assets/images/flutter.jpeg')),
+                      image: NetworkImage(
+                          'https://github.com/niezhiyang/flutter_sweet/blob/master/art/flutter.jpeg?raw=true')),
                   borderRadius: BorderRadius.circular(menuSize / 2)),
             ),
           ),
@@ -111,7 +112,6 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
         Circled(color: wrapColor, child: const Icon(Icons.print)),
         Circled(
             color: wrapColor, radius: 15, child: const Icon(Icons.bug_report)),
-
         Circled(color: wrapColor, radius: 15, child: const Icon(Icons.palette)),
         Circled(color: wrapColor, child: const Icon(Icons.widgets)),
         Circled(color: wrapColor, child: const Icon(Icons.settings)),
@@ -121,7 +121,7 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
     print(index);
     switch (index) {
       case 0:
-        _doClose();
+        _showConsole();
         return true;
         break;
       case 1:
@@ -134,17 +134,14 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
         _toWidget();
         break;
       case 4:
-        _toSetting();
         break;
     }
 
     return true;
   }
 
-  // 处理 菜单 item 点击事件
-  void _toSetting() {
-    Navigator.of(context).pushNamed("");
-  }
+  // 打开日志窗口
+  void _showConsole() {}
 
   void _toWidget() {}
 
@@ -154,12 +151,6 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
 
   void _toPoint() {
     Navigator.of(context).pushNamed("");
-  }
-
-  void _doClose() {
-    if (Navigator.of(context).canPop()) {
-      Navigator.of(context).pop();
-    }
   }
 
   double endX = 0;
