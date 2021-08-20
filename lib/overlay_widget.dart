@@ -95,14 +95,7 @@ class OverlayToolWidgetState extends State<OverlayToolWidget>
             decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(menuSize / 2)),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.blue,
-                  image: DecorationImage(
-                      image: NetworkImage(
-                          'https://github.com/niezhiyang/flutter_sweet/blob/master/art/flutter.jpeg?raw=true')),
-                  borderRadius: BorderRadius.circular(menuSize / 2)),
-            ),
+            child: FlutterLogo(),
           ),
         ),
       );
